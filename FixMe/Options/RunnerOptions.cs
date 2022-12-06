@@ -16,9 +16,15 @@ namespace FixMe.Options
         public int Iterations { get;} = 500000;
 
         /// <summary>
-        /// The filepath that we want the cheat sheet to be printed to.
+        /// The filepath that we want the cheat sheet to be printed to containing the output from the cuirckle
         /// </summary>
-        public string FilePath { get; } = "./exam-cheat-sheet.cs";
+        public string CuirckleFilePath { get; } = "./exam-cuirckle-cheat-sheet.txt";
+
+
+        /// <summary>
+        /// The filepath that we want the cheat sheet to be printed to containing the output from the atrangle
+        /// </summary>
+        public string AtrangleFilePath { get; } = "./exam-atrangle-cheat-sheet.txt";
 
     }
 }

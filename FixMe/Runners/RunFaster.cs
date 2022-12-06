@@ -13,37 +13,44 @@ namespace FixMe.Runners
     {
         private readonly RunnerOptions options;
 
-        private object[] _all_the_irckles;
+        private object[] _all_the_cheats;
 
         public RunFaster()
         {
             options = new RunnerOptions();
-            _all_the_irckles = Fill.FillDataObjectArray();
+            _all_the_cheats = Fill.FillDataObjectArray();
         }
         
         [Benchmark]
         public void Run() 
         {               
-            using (StreamWriter sw = File.CreateText(options.FilePath))
-            {
-                foreach (var irckle in _all_the_irckles)
+            
+            for (int i = 0; i<_all_the_cheats.Count(); i++)
+            {                    
+                var cheatType = _all_the_cheats[i];
+                if (cheatType is Cuirckle)
                 {
-                    if (irckle is Cuirckle)
+                        
+                    using (StreamWriter sw = File.AppendText(options.CuirckleFilePath))
                     {
-                        var _irckle = irckle as Cuirckle;
+                        var _irckle = cheatType as Cuirckle;
                         double circumference = _irckle.Calculate;
                         sw.WriteLine($"Circumference of circle: {_irckle.RandomRadius}:{circumference}");
                         sw.Flush();
                     }
-                    else
+                        
+                }
+                else
+                {
+                    using (StreamWriter sw = File.AppendText(options.AtrangleFilePath))
                     {
-                        var _angle = irckle as Atrangle;
+                        var _angle = cheatType as Atrangle;
                         double area = _angle.Calculate;
                         sw.WriteLine($"Area of triangle: {area}");
                         sw.Flush();
-                    }                    
-                }               
-            }
+                    }
+                }
+            }                                   
         }
     }
 }

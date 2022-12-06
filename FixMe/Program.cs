@@ -21,7 +21,7 @@ Console.WriteLine("");
 Console.WriteLine("Hint: use BenchmarkDotNet for your testing purposes.");
 Console.WriteLine("https://github.com/dotnet/BenchmarkDotNet");
 
-RunFaster runFaster = new RunFaster();
-runFaster.Run();
+//RunFaster runFaster = new RunFaster();
+//runFaster.Run();
 
-//var summary = BenchmarkRunner.Run<RunFaster>();
+var summary = BenchmarkRunner.Run<RunFaster>();
